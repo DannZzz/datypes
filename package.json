@@ -1,0 +1,25 @@
+{
+  "name": "datype",
+  "version": "1.0.0",
+  "description": "Javascript Extended Types",
+  "main": "build/index.js",
+  "keywords": [
+    "types",
+    "objects",
+    "number",
+    "array",
+    "methods"
+  ],
+  "author": {
+    "name": "Dann",
+    "email": "vmakichyan0@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DannZzz/datype.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "anytool": "^1.0.2"
+  }
+}
