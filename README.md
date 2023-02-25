@@ -18,13 +18,13 @@ I gave them some methods which I use too often
 # Installation
 
 ```sh
-npm install datype
+npm install datypes
 ```
 
 Or
 
 ```sh
-yarn add datype
+yarn add datypes
 ```
 
 # Get Started
@@ -32,7 +32,7 @@ yarn add datype
 First we have to import just one thing
 
 ```ts
-import $ from "datype"
+import $ from "datypes"
 ```
 
 Now We can define variables

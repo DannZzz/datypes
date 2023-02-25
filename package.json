@@ -1,6 +1,6 @@
 {
-  "name": "datype",
-  "version": "1.0.0",
+  "name": "datypes",
+  "version": "1.0.1",
   "description": "Javascript Extended Types",
   "main": "build/index.js",
   "keywords": [
@@ -16,10 +16,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DannZzz/datype.git"
+    "url": "https://github.com/DannZzz/datypes.git"
   },
   "license": "ISC",
   "dependencies": {
     "anytool": "^1.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
