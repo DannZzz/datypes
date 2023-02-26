@@ -7,8 +7,9 @@
     "outDir": "./build",
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "declaration": true
+    "declaration": true,
+    "typeRoots": ["src/datype/@types"]
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**.*"]
+  "include": ["./src"]
 }

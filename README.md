@@ -8,10 +8,10 @@ Soooo..
 
 # Types
 
-- Dobject
-- Darray
-- DaString
-- DaNumber
+- $object
+- $Array
+- $string
+- $number
 
 I gave them some methods which I use too often
 
@@ -60,13 +60,11 @@ person.hobbies.remove(0) // ["_"] removes it's element
 person.hobbies.log() // logs value
 ```
 
-Our **$** is a namespace also!
-
-So in TypeScript we can do
+Types now are global
 
 ```ts
-let age: $.DaNumber
-let person: $.Dobject<MyInterface>
+let age: $number
+let person: $object<MyInterface>
 ```
 
 Also array method **.readonly()**

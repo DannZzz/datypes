@@ -1,12 +1,10 @@
-type DaString<T extends string = string> = DaStringConstructor<T> & T
-
-class DaStringConstructor<T extends string> extends String {
-  static new<T extends string>(value?: T): DaString<T> {
-    return new DaStringConstructor(value) as any
+export class $StringConstructor<T extends string> extends String {
+  static new<T extends string>(value?: T): $string<T> {
+    return new $StringConstructor(value) as any
   }
 
-  static isDaString(val: any): val is DaString {
-    return val instanceof DaString
+  static is$string(val: any): val is $string {
+    return val instanceof $string
   }
 
   private constructor(value?: any) {
@@ -27,14 +25,14 @@ class DaStringConstructor<T extends string> extends String {
    *
    * @param splitRegexp pattern for splitting
    * @param joinRegexp pattern for joining
-   * @returns {DaString}
+   * @returns {$string}
    *
    * @example
    * $("hello   guys").capitalize() // "Hello Guys"
    * $("yoo_dudes").capitalize("_", "   ") // "Yoo   Dudes"
    */
-  capitalize(splitRegexp: any = / +/g, joinRegexp: any = " "): DaString {
-    return DaString.new(
+  capitalize(splitRegexp: any = / +/g, joinRegexp: any = " "): $string {
+    return $string.new(
       String(this)
         .split(splitRegexp)
         .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
@@ -46,14 +44,14 @@ class DaStringConstructor<T extends string> extends String {
    * Cuts string and adds ...
    *
    * @param {number} maxLength max length of string
-   * @returns {DaString}
+   * @returns {$string}
    *
    * @example
    * $("I Love You").shorten(4) // I...
    */
-  shorten(maxLength: number): DaString {
+  shorten(maxLength: number): $string {
     const text = String(this)
-    return DaString.new(
+    return $string.new(
       text.length > maxLength ? `${text.substring(0, maxLength - 3)}...` : text
     )
   }
@@ -66,6 +64,6 @@ class DaStringConstructor<T extends string> extends String {
   }
 }
 
-const DaString = DaStringConstructor
+const $string = $StringConstructor
 
-export default DaString
+export default $string

@@ -1,10 +1,8 @@
 import { randomNumber } from "anytool"
 
-type DaNumber<T extends number = number> = T & DaNumberConstructor<T>
-
-class DaNumberConstructor<T extends number> extends Number {
-  static new<T extends number>(value?: T): DaNumber<T> {
-    return new DaNumber(value) as any
+export class $NumberConstructor<T extends number> extends Number {
+  static new<T extends number>(value?: T): $number<T> {
+    return new $number(value) as any
   }
 
   /**
@@ -12,14 +10,14 @@ class DaNumberConstructor<T extends number> extends Number {
    *
    * @param {number} min min of range
    * @param {number} max max of range
-   * @returns {DaNumber}
+   * @returns {$number}
    */
-  static random(min: number, max: number): DaNumber {
-    return DaNumber.new(randomNumber(min, max))
+  static random(min: number, max: number): $number {
+    return $number.new(randomNumber(min, max))
   }
 
-  static isDaNumber(val: any): val is DaNumber {
-    return val instanceof DaNumber
+  static is$number(val: any): val is $number {
+    return val instanceof $number
   }
 
   private constructor(value?: any) {
@@ -65,28 +63,28 @@ class DaNumberConstructor<T extends number> extends Number {
   /**
    * Similar with Math.round
    *
-   * @returns {DaNumber}
+   * @returns {$number}
    */
-  round(): DaNumber {
-    return DaNumber.new(Math.round(Number(this)))
+  round(): $number {
+    return $number.new(Math.round(Number(this)))
   }
 
   /**
    * Similar with Math.ceil
    *
-   * @returns {DaNumber}
+   * @returns {$number}
    */
-  ceil(): DaNumber {
-    return DaNumber.new(Math.ceil(Number(this)))
+  ceil(): $number {
+    return $number.new(Math.ceil(Number(this)))
   }
 
   /**
    * Similar with Math.floor
    *
-   * @returns {DaNumber}
+   * @returns {$number}
    */
-  floor(): DaNumber {
-    return DaNumber.new(Math.floor(Number(this)))
+  floor(): $number {
+    return $number.new(Math.floor(Number(this)))
   }
 
   /**
@@ -97,6 +95,6 @@ class DaNumberConstructor<T extends number> extends Number {
   }
 }
 
-const DaNumber = DaNumberConstructor
+const $number = $NumberConstructor
 
-export default DaNumber
+export default $number

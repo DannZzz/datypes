@@ -1,6 +1,6 @@
 import { _clone } from "../utils"
 
-abstract class DobjectConstructor<T> {
+export class $Object<T> {
   /**
    * Similiar with JSON.stringify()
    */
@@ -22,25 +22,25 @@ abstract class DobjectConstructor<T> {
    * primitive types, arrays, objects and Date
    * Functions with refs !
    */
-  readonly $clone: () => Dobject<T>
+  readonly $clone: () => $object<T>
   /**
    * Clones with refs, faster
    */
-  readonly $shallowClone: () => Dobject<T>
+  readonly $shallowClone: () => $object<T>
   /**
    * Map method
    *
    * @example
    * $({price1: 10, price2: 20}).map((val, key) => val * 2) // {price1: 20, price2: 40}
    */
-  readonly $map: (cb: (value: any, key: keyof T) => any) => Dobject<T>
+  readonly $map: (cb: (value: any, key: keyof T) => any) => $object<T>
   /**
    * Filter method
    *
    * @example
    * $({price1: 10, price2: 20}).filter((val, key) => val > 15) // {price2: 20}
    */
-  readonly $filter: (cb: (value: any, key: keyof T) => boolean) => Dobject<any>
+  readonly $filter: (cb: (value: any, key: keyof T) => boolean) => $object<any>
   /**
    * For Each method / Loop
    *
@@ -98,7 +98,7 @@ abstract class DobjectConstructor<T> {
    */
   readonly $log: () => void
 
-  constructor() {
+  private constructor(value?: any) {
     Object.defineProperties(this, {
       $log: {
         enumerable: false,
@@ -191,14 +191,14 @@ abstract class DobjectConstructor<T> {
         enumerable: false,
         writable: false,
         value: () => {
-          return Dobject.new(_clone(this))
+          return $Object.new(_clone(this))
         },
       },
       $shallowClone: {
         enumerable: false,
         writable: false,
         value: () => {
-          return Dobject.new(Object.assign({}, this))
+          return $Object.new(Object.assign({}, this))
         },
       },
       $map: {
@@ -209,7 +209,7 @@ abstract class DobjectConstructor<T> {
           for (let k in this) {
             obj[k] = cb(this[k], k)
           }
-          return Dobject.new(obj)
+          return $Object.new(obj)
         },
       },
       $filter: {
@@ -220,7 +220,7 @@ abstract class DobjectConstructor<T> {
           for (let k in this) {
             if (!!cb(this[k], k)) obj[k] = this[k]
           }
-          return Dobject.new(obj)
+          return $Object.new(obj)
         },
       },
       $forEach: {
@@ -234,14 +234,7 @@ abstract class DobjectConstructor<T> {
         },
       },
     })
-  }
-}
 
-type Dobject<T = any> = T & DobjectConstructor<T>
-
-const Dobject = class<T> extends DobjectConstructor<T> {
-  private constructor(value?: any) {
-    super()
     if (value instanceof Object) {
       for (let k in value) {
         if (!Object.hasOwn(this, k)) {
@@ -251,13 +244,13 @@ const Dobject = class<T> extends DobjectConstructor<T> {
     }
   }
 
-  static isDobject(val: any): val is Dobject {
-    return val instanceof Dobject
+  static is$object(val: any): val is $object {
+    return val instanceof $Object
   }
 
-  static new<D extends any>(value: D): Dobject<D> {
-    return new Dobject(value) as any
+  static new<D extends any>(value: D): $object<D> {
+    return $Object.new(value) as any
   }
 }
 
-export default Dobject
+export default $Object

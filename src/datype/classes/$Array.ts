@@ -1,14 +1,12 @@
 import { equal } from "anytool"
 
-type Darray<T> = Array<T> & DarrayConstructor<T>
-
-class DarrayConstructor<T> extends Array {
-  static new<T>(...vals: T[]): Darray<T> {
-    return new DarrayConstructor(...vals) as any
+export class $ArrayConstructor<T> extends Array {
+  static new<T>(...vals: T[]): $Array<T> {
+    return new $ArrayConstructor(...vals) as any
   }
 
-  static isDarray(val: any): val is Darray<any> {
-    return val instanceof Darray
+  static is$Array(val: any): val is $Array<any> {
+    return val instanceof $Array
   }
 
   private constructor(...vals: any[]) {
@@ -16,11 +14,11 @@ class DarrayConstructor<T> extends Array {
   }
 
   /**
-   * Shuffles and returns new Darray
+   * Shuffles and returns new $Array
    *
-   * @returns {Darray<T>}
+   * @returns {$Array<T>}
    */
-  shuffle(): Darray<T> {
+  shuffle(): $Array<T> {
     const arr = this.slice(0)
     for (let i = arr.length - 1; i >= 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
@@ -28,7 +26,7 @@ class DarrayConstructor<T> extends Array {
       arr[i] = arr[j]
       arr[j] = temp
     }
-    return DarrayConstructor.new(...arr)
+    return $ArrayConstructor.new(...arr)
   }
 
   /**
@@ -80,10 +78,10 @@ class DarrayConstructor<T> extends Array {
   /**
    * Removes duplicates
    *
-   * @returns {Darray<T>}
+   * @returns {$Array<T>}
    */
-  unique(): Darray<T> {
-    return DarrayConstructor.new(...new Set(this))
+  unique(): $Array<T> {
+    return $ArrayConstructor.new(...new Set(this))
   }
 
   /**
@@ -117,6 +115,6 @@ class DarrayConstructor<T> extends Array {
   }
 }
 
-const Darray = DarrayConstructor
+const $Array = $ArrayConstructor
 
-export default Darray
+export default $Array
