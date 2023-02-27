@@ -1,4 +1,4 @@
-# Da Daaam (Javascript Extended Types)
+# Da Daaam (Global Javascript Extended Types)
 
 I don't even know, are there packages better
 
@@ -29,10 +29,14 @@ yarn add datypes
 
 # Get Started
 
-First we have to import just one thing
+First we have to initialize global function $
+
+**You have to run this function in your main file only once**
 
 ```ts
-import $ from "datypes"
+import initTypes from "datypes"
+
+initTypes()
 ```
 
 Now We can define variables
