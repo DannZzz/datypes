@@ -1,8 +1,8 @@
 import { AnyObject } from "./type"
-import $number, { $NumberConstructor } from "./classes/$number"
-import $Array, { $ArrayConstructor } from "./classes/$Array"
-import $string, { $StringConstructor } from "./classes/$string"
-import $object_, { $Object } from "./classes/$object"
+import { $NumberConstructor } from "./classes/$number"
+import { $ArrayConstructor } from "./classes/$Array"
+import { $StringConstructor } from "./classes/$string"
+import { $Object } from "./classes/$object"
 
 declare global {
   /**
@@ -10,7 +10,7 @@ declare global {
    * @example
    * $object<{name: string; age: number}>
    */
-  type $object<T = any> = T & $object_<T>
+  type $object<T = any> = T & $Object<T>
   /**
    * Array type []
    * @example
@@ -32,7 +32,7 @@ declare global {
    * $string === any string
    * $string<"name" | "surname"> === only "name" or "surname"
    */
-  type $string<T extends string = string> = $StringConstructor<T> & T
+  type $string<T extends string = string> = T & $StringConstructor<T>
 
   /**
    * Define a value
@@ -80,15 +80,15 @@ type GetType<T = any> = T extends number
   ? $object<T>
   : T
 
-function $<T>(value?: T) {
+function $<T>(value?: T): any {
   if (value == null || value == undefined) return undefined
 
-  if (typeof value === "number") return $number.new(value)
-  if (typeof value === "string") return $string.new(value)
+  if (typeof value === "number") return $NumberConstructor.new(value)
+  if (typeof value === "string") return $StringConstructor.new(value)
 
-  if (Array.isArray(value)) return $Array.new(...value)
+  if (Array.isArray(value)) return $ArrayConstructor.new(...value)
 
-  if (value instanceof Object) return $object_.new(value)
+  if (value instanceof Object) return $Object.new(value)
 
   return value
 }

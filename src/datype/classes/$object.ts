@@ -251,7 +251,7 @@ export class $Object<T> {
   }
 
   static new<D extends any>(value: D): $object<D> {
-    return $Object.new(value) as any
+    return new $Object(value) as any
   }
 }
 
