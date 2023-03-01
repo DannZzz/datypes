@@ -1,5 +1,7 @@
 import { _clone } from "../utils"
 
+export type $object<T> = T & $Object<T>
+
 export class $Object<T> {
   /**
    * Similiar with JSON.stringify()
@@ -244,7 +246,7 @@ export class $Object<T> {
     }
   }
 
-  static is$object(val: any): val is $object {
+  static is$object(val: any): val is $Object<any> {
     return val instanceof $Object
   }
 

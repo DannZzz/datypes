@@ -2,7 +2,7 @@ import { AnyObject } from "./type"
 import $number, { $NumberConstructor } from "./classes/$number"
 import $Array, { $ArrayConstructor } from "./classes/$Array"
 import $string, { $StringConstructor } from "./classes/$string"
-import $object, { $Object } from "./classes/$object"
+import $object_, { $Object } from "./classes/$object"
 
 declare global {
   /**
@@ -10,7 +10,7 @@ declare global {
    * @example
    * $object<{name: string; age: number}>
    */
-  type $object<T = any> = T & $Object<T>
+  type $object<T = any> = T & $object_<T>
   /**
    * Array type []
    * @example
@@ -40,7 +40,7 @@ declare global {
    * @example
    * const a = $() // undefined
    */
-  function $(): undefined
+  function $(): any
   /**
    * Define a value
    *
@@ -88,7 +88,7 @@ function $<T>(value?: T) {
 
   if (Array.isArray(value)) return $Array.new(...value)
 
-  if (value instanceof Object) return $object.new(value)
+  if (value instanceof Object) return $object_.new(value)
 
   return value
 }

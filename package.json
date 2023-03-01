@@ -1,6 +1,6 @@
 {
   "name": "datypes",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Global Javascript Extended Types",
   "main": "./build/index.js",
   "files": [
