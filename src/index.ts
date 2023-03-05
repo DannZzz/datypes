@@ -34,6 +34,8 @@ declare global {
    */
   type $string<T extends string = string> = T & $StringConstructor<T>
 
+  type $<T> = ReturnType<typeof $<T>>
+
   /**
    * Define a value
    *

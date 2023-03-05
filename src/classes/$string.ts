@@ -41,6 +41,18 @@ export class $StringConstructor<T extends string> extends String {
   }
 
   /**
+   * Capitalizes first character
+   *
+   * @returns {$string}
+   *
+   * @exmaple
+   * $("dann and friends").capitalizeFirst() // Dann and friends
+   */
+  capitalizeFirst(): $string {
+    return $string.new(this[0].toUpperCase() + this.slice(1))
+  }
+
+  /**
    * Cuts string and adds ...
    *
    * @param {number} maxLength max length of string
@@ -54,6 +66,26 @@ export class $StringConstructor<T extends string> extends String {
     return $string.new(
       text.length > maxLength ? `${text.substring(0, maxLength - 3)}...` : text
     )
+  }
+
+  /**
+   * Wheter or not this string has all items in spec. array
+   *
+   * @param {...any[]} items
+   * @returns {boolean}
+   */
+  includesAll(...items: any[]): boolean {
+    return items.every((item) => this.includes(item))
+  }
+
+  /**
+   * Wheter or not this string has any item in spec. array
+   *
+   * @param {...any[]} items
+   * @returns {boolean}
+   */
+  includesAny(...items: any[]): boolean {
+    return items.some((item) => this.includes(item))
   }
 
   /**

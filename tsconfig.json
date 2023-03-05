@@ -11,7 +11,7 @@
     "typeRoots": ["node_modules/@types", "node_modules/datypes/typings/datypes"]
   },
   "exclude": ["node_modules"],
-  "include": ["./src/"],
+  "include": ["./src/", "index.js"],
   "ts-node": {
     "files": true
   }

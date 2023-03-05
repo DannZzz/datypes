@@ -1,11 +1,10 @@
 {
   "name": "datypes",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Global Javascript Extended Types",
   "main": "./build/index.js",
   "files": [
     "build",
-    "datype",
     "typings"
   ],
   "keywords": [

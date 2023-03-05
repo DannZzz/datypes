@@ -1,5 +1,0 @@
-{
-  "name": "datypes/datype",
-  "private": true,
-  "main": "../build/secondary-package-name/index.js"
-}

@@ -78,6 +78,11 @@ const arr = $([1, 2, 3]) // type - number[]
 const readonlyArr = arr.readonly() // type - readonly number[]
 ```
 
+# Changelog
+
+- New methods for Arrays (includesAny, includesAll, compute)
+- New methods for Strings (includesAny, includesAll, capitalizeFirst)
+
 ## It's not All!
 
 [Install](#installation) and check yourself!
