@@ -35,7 +35,7 @@ export class $ArrayConstructor<T> extends Array {
    * @returns {boolean}
    */
   empty(): boolean {
-    return !!this.length
+    return !this.length
   }
 
   /**
