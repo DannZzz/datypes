@@ -35,7 +35,64 @@ declare global {
    */
   type $string<T extends string = string> = T & $StringConstructor<T>
 
-  type $<T> = ReturnType<typeof $<T>>
+  namespace $ {
+    /**
+     * Get random integer from range
+     *
+     * @param {number} min min of range
+     * @param {number} max max of range
+     * @returns {$number}
+     */
+    export const randomNumber: (min: number, max: number) => $number
+
+    /**
+     * Creates $Array with spec. length with custom mapping
+     *
+     * @param length length of array
+     * @param {(i: number) => any} map
+     * @returns {$Array}
+     *
+     * @example
+     * const numbers = $.$ArrayLength(5, (i) => i) // [0, 1, 2, 3, 4]
+     * const randomDigits = $.$ArrayLength(4, () => $.randomNumber(0, 9)) // [4, 6, 7, 1]
+     */
+    export const $ArrayLength: <T>(
+      length: number,
+      map: (index: number) => T
+    ) => $Array<T>
+
+    /**
+     * Whether or not value is an instance of $number
+     *
+     * @param {any} val
+     * @returns {boolean}
+     */
+    export const is$number: (val: any) => val is $number
+
+    /**
+     * Whether or not value is an instance of $string
+     *
+     * @param {any} val
+     * @returns {boolean}
+     */
+    export const is$string: (val: any) => val is $string
+
+    /**
+     * Whether or not value is an instance of $Array
+     *
+     * @param {any} val
+     * @returns {boolean}
+     */
+    export const is$Array: (val: any) => val is $Array<any>
+
+    /**
+     * Whether or not value is an instance of $object
+     *
+     * @param {any} val
+     * @returns {boolean}
+     */
+    export const is$object: (val: any) => val is $object
+  }
 
   /**
    * Define a value
@@ -95,7 +152,6 @@ function $<T>(value?: T): any {
 
   return value
 }
-
 /**
  * Get random integer from range
  *
