@@ -5,10 +5,6 @@ export class $ArrayConstructor<T> extends Array {
     return new $ArrayConstructor(...vals) as any
   }
 
-  static is$Array(val: any): val is $Array<any> {
-    return val instanceof $Array
-  }
-
   private constructor(...vals: any[]) {
     super(...vals)
   }

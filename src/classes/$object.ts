@@ -246,10 +246,6 @@ export class $Object<T> {
     }
   }
 
-  static is$object(val: any): val is $Object<any> {
-    return val instanceof $Object
-  }
-
   static new<D extends any>(value: D): $object<D> {
     return new $Object(value) as any
   }

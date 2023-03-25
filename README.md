@@ -6,6 +6,8 @@ Just wanted to write mine, own
 
 Soooo..
 
+# [Check Last Update](#changelog)
+
 # Types
 
 - $object
@@ -78,7 +80,28 @@ const arr = $([1, 2, 3]) // type - number[]
 const readonlyArr = arr.readonly() // type - readonly number[]
 ```
 
+# $ArrayLength
+
+```ts
+const numbers = $.$ArrayLength(5, (i) => i) // [0, 1, 2, 3, 4]
+
+const randomDigits = $.$ArrayLength(4, () => $.randomNumber(0, 9)) // [4, 6, 7, 1]
+```
+
 # Changelog
+
+v1.3.0
+
+- Removed static methodes from $number, $string, $object and $Array
+- Added new static methods for global function $
+  - is$number (whether or not value is an instance of $number)
+  - is$string (whether or not value is an instance of $string)
+  - is$object (whether or not value is an instance of $object)
+  - is$Array (whether or not value is an instance of $Array)
+  - randomNumber (returns random number between a range)
+  - [$ArrayLength](#arraylength) (returns an $Array with spec. length by custom map)
+
+v1.2.3
 
 - New methods for Arrays (includesAny, includesAll, compute)
 - New methods for Strings (includesAny, includesAll, capitalizeFirst)

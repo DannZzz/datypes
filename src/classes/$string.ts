@@ -3,10 +3,6 @@ export class $StringConstructor<T extends string> extends String {
     return new $StringConstructor(value) as any
   }
 
-  static is$string(val: any): val is $string {
-    return val instanceof $string
-  }
-
   private constructor(value?: any) {
     super(value)
   }

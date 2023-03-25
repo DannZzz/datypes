@@ -5,21 +5,6 @@ export class $NumberConstructor<T extends number> extends Number {
     return new $number(value) as any
   }
 
-  /**
-   * Get random integer from range
-   *
-   * @param {number} min min of range
-   * @param {number} max max of range
-   * @returns {$number}
-   */
-  static random(min: number, max: number): $number {
-    return $number.new(randomNumber(min, max))
-  }
-
-  static is$number(val: any): val is $number {
-    return val instanceof $number
-  }
-
   private constructor(value?: any) {
     super(value)
   }

@@ -3,6 +3,7 @@ import { $NumberConstructor } from "./classes/$number"
 import { $ArrayConstructor } from "./classes/$Array"
 import { $StringConstructor } from "./classes/$string"
 import { $Object } from "./classes/$object"
+import { randomNumber } from "anytool"
 
 declare global {
   /**
@@ -93,6 +94,41 @@ function $<T>(value?: T): any {
   if (value instanceof Object) return $Object.new(value)
 
   return value
+}
+
+/**
+ * Get random integer from range
+ *
+ * @param {number} min min of range
+ * @param {number} max max of range
+ * @returns {$number}
+ */
+$.randomNumber = (min: number, max: number): $number => {
+  return $NumberConstructor.new(randomNumber(min, max))
+}
+
+$.$ArrayLength = <T>(length: number, map: (index: number) => T): $Array<T> => {
+  const arr = $([])
+  for (let i = 0; i < length; i++) {
+    arr.push(map(i))
+  }
+  return arr
+}
+
+$.is$number = (val: any): val is $number => {
+  return val instanceof $NumberConstructor
+}
+
+$.is$string = (val: any): val is $string => {
+  return val instanceof $StringConstructor
+}
+
+$.is$object = (val: any): val is $Object<any> => {
+  return val instanceof $Object
+}
+
+$.is$Array = (val: any): val is $Array<any> => {
+  return val instanceof $ArrayConstructor
 }
 
 /**
